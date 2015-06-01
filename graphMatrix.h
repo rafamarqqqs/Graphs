@@ -24,5 +24,6 @@ int topologicalOrdenationMatrixGraph(MatrixGraph *, int *);
 MatrixGraph *kruskalMSTMatrixGraph(MatrixGraph *);
 MatrixGraph *primMSTMatrixGraph(MatrixGraph *);
 int printSumMatrixGraph(MatrixGraph *);
+int dijkstraShortestPathMatrixGraph(MatrixGraph *, int, int);
 
 #endif

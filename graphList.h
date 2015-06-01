@@ -24,6 +24,7 @@ int topologicalOrdenationListGraph(ListGraph *, int *);
 ListGraph *kruskalMSTListGraph(ListGraph *);
 ListGraph *primMSTListGraph(ListGraph *);
 int printSumListGraph(ListGraph *);
+int dijkstraShortestPathListGraph(ListGraph *, int, int);
 
 #endif
 

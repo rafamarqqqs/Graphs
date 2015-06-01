@@ -118,3 +118,7 @@ int heapFind(Heap *heap, int n){
 
 	return 0;
 }
+
+int empty(Heap *heap){
+	return !(heap -> size);
+}

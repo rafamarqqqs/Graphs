@@ -19,5 +19,6 @@ void printHeap(Heap *);
 int heapFind(Heap *, int);
 int setKey(Heap *, int, int);
 void freeHeap(Heap **);
+int empty(Heap *heap);
 
 #endif 

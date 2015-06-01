@@ -211,3 +211,13 @@ int printSum(Graph *graph){
 
 	return -1;
 }
+
+int dijkstraShortestPath(Graph *graph, int start, int end){
+	if(!graph)
+		return -1;
+
+	DECIDER(graph -> type, return dijkstraShortestPathListGraph(graph -> listGraph, start, end), 
+						   return dijkstraShortestPathMatrixGraph(graph -> matrixGraph, start, end));
+
+	return 0;
+}

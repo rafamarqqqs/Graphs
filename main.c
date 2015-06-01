@@ -8,21 +8,16 @@
 int main(int argc, char *argv[]){
 
 	Graph *graph = NULL;
-	Graph *newGraph = NULL;
-	int vertex, edges;
+	int vertex, edges, end, start;
 
 	scanf("%d %d", &vertex, &edges);
 
-	graph = createGraph('M', 'G', vertex, edges);
+	graph = createGraph('L', 'D', vertex, edges);
 
-	printGraph(graph);
-
-	newGraph = primMST(graph);
-
-	printf("%d %d\n", printSum(graph), printSum(newGraph));
+	while((scanf("%d %d", &start, &end)) != EOF)
+		dijkstraShortestPath(graph, start, end);
 
 	freeGraph(&graph);
-	freeGraph(&newGraph);
 
 	return 0;
 }

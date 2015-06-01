@@ -504,3 +504,64 @@ int printSumMatrixGraph(MatrixGraph *graph){
 	
 	return weight;
 }
+
+//processo de relaxamento das arestas
+void relaxMatrixGraph(Heap *heap, int *d, int *p, int u, int v, int w){
+	if(d[v] > w + d[u]){
+		//atualiza o valor do vértice na heap
+		setKey(heap, v, w + d[u]);
+		p[v] = u;
+		d[v] = w + d[u];
+	}
+}
+
+int dijkstraShortestPathMatrixGraph(MatrixGraph *graph, int start, int end){
+	if(!graph -> is_digraph)
+		return -1;
+
+	Heap *heap;
+	int i, j, *p, *d, u, v, w;
+
+	//vetores predecessor e "distancia"
+	p = (int *) malloc(sizeof(int) * graph -> size);
+	d = (int *) malloc(sizeof(int) * graph -> size);
+	heap = createHeap();
+
+	//como na especificãção o valor máximo é 9999, inicializei todos com 10000
+	for(i = 0; i < graph -> size; i++){
+		p[i] = -1;
+		d[i] = 10000;
+		heapInsert(heap, i, 10000);
+	}
+
+	//muda o peso no vértice inicial e o seu valor na heap
+	d[start] = 0;
+	setKey(heap, start, 0);
+
+	while(!empty(heap)){
+		HeapNode *node = extractMin(heap);
+		
+		u = node -> id;
+				//aplica o processo de relaxamento dos vértices para todos os vértices adjacentes a u
+		for(i = u; i < graph -> size; i++){
+			for(j = 0; j < graph -> size; j++){
+				if(graph -> matrix[i][j] != -1){
+					v = j;
+					w = graph -> matrix[i][j];
+					relaxMatrixGraph(heap, d, p, u, v, w);
+				}
+			}
+		}
+
+		free(node);
+	}
+
+	//imprime o caminho
+	buildPath(p, end, start);
+
+	free(p);
+	free(d);
+	freeHeap(&heap);
+
+	return 1;
+}

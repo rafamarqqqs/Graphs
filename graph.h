@@ -69,5 +69,6 @@ void transformGraph(Graph *);
 Graph *kruskalMST(Graph *);
 Graph *primMST(Graph *);
 int printSum(Graph *);
+int dijkstraShortestPath(Graph *, int, int);
 
 #endif
