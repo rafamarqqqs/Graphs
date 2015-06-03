@@ -12,6 +12,8 @@
 #define BLACK -3
 #define GRAY -2
 
+#define INFINITE 1000000000
+
 int addVertexListGraph(ListGraph *graph){					//adds a vertex to the graph
 	if(!graph)
 		return -1;
@@ -524,11 +526,10 @@ int dijkstraShortestPathListGraph(ListGraph *graph, int start, int end){
 	d = (int *) malloc(sizeof(int) * graph -> size);
 	heap = createHeap();
 
-	//como na especificãção o valor máximo é 9999, inicializei todos com 10000
 	for(i = 0; i < graph -> size; i++){
 		p[i] = -1;
-		d[i] = 10000;
-		heapInsert(heap, i, 10000);
+		d[i] = INFINITE;
+		heapInsert(heap, i, INFINITE);
 	}
 
 	//muda o peso no vértice inicial e o seu valor na heap

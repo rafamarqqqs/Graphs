@@ -1,2 +1,0 @@
-Implementei a MST para ambas as representações de grafo.
-Os sets utilizados são florestas de conjuntos disjuntos, como é explicado no livro do Cormen, utilizando as heurísticas de união pelo posto e compressão de caminho.
